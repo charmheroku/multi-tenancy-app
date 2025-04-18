@@ -12,4 +12,4 @@ app.include_router(core_router, prefix="/api/core")
 
 @app.on_event("startup")
 async def on_startup() -> None:
-    await db_manager.init_core()
+    await db_manager.init_core(generate_schemas=True)
