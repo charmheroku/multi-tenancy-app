@@ -17,35 +17,43 @@ A scalable multi-tenant application built with FastAPI and Tortoise ORM. The app
 
 ## Quick Start
 
-1. Clone the repository:
-```bash
-git clone https://github.com/charmheroku/multi-tenancy-app
-cd multi-tenancy-app
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/charmheroku/multi-tenancy-app
+   cd multi-tenancy-app
+   ```
 
-2. Start the application using Docker Compose:
-```bash
-docker-compose up
-```
+2. **Start the application using Docker Compose:**
+   ```bash
+   docker-compose up
+   ```
 
-3. The API will be available at http://localhost:8000
+3. The API will be available at **http://localhost:8000**
 
+## Interactive API Documentation  
+Once the server is running, you can explore the API and test requests in‑browser:
+
+- **Swagger UI:** <http://localhost:8000/docs>
 
 ## API Endpoints
 
 ### Core Endpoints
 
-- `POST /api/register` - Register a new core user
-- `POST /api/login` - Login a core user
-- `POST /api/organizations` - Create a new organization (tenant)
+| Method | Path | Description |
+| ------ | ---- | ----------- |
+| `POST` | `/api/register` | Register a new core user |
+| `POST` | `/api/login` | Login a core user |
+| `POST` | `/api/organizations` | Create a new organization (tenant) |
 
 ### Tenant Endpoints
 
-All tenant endpoints require the `X-Tenant` header with a valid tenant ID.
+> All tenant endpoints require the `X-Tenant` header with a valid tenant ID.
 
-- `POST /api/tenant/auth/register` - Register a tenant user
-- `POST /api/tenant/auth/login` - Login a tenant user
-- `GET /api/tenant/users/me` - Get the current tenant user profile
+| Method | Path | Description |
+| ------ | ---- | ----------- |
+| `POST` | `/api/tenant/auth/register` | Register a tenant user |
+| `POST` | `/api/tenant/auth/login` | Login a tenant user |
+| `GET`  | `/api/tenant/users/me`     | Get the current tenant user profile |
 
 ## Project Structure
 
@@ -117,20 +125,22 @@ multi_tenancy_app/
 
 The application follows clean architecture principles:
 
-- `core/domain/models.py` - Core domain models
-- `core/repositories/` - Repository interfaces for core
-- `tenant/repositories/` - Repository interfaces for tenants
-- `core/use_cases/` - Core business logic
-- `tenant/use_cases/` - Tenant business logic
-- `adapters/` - Implementation of repositories
-- `api/` - FastAPI routes and dependencies
+- `core/domain/models.py` – Core domain models
+- `core/repositories/` – Repository interfaces for core
+- `tenant/repositories/` – Repository interfaces for tenants
+- `core/use_cases/` – Core business logic
+- `tenant/use_cases/` – Tenant business logic
+- `adapters/` – Implementation of repositories
+- `api/` – FastAPI routes and dependencies
 
 ## Database Strategy Pattern
 
 The application uses the Strategy pattern to support different database types:
 
-- `SQLiteStrategy` - For SQLite databases (development/testing)
-- `PostgresStrategy` - For PostgreSQL databases (production)
+- **SQLiteStrategy** – for SQLite databases (development/testing)
+- **PostgresStrategy** – for PostgreSQL databases (production)
 
 ## Testing
-...
+
+Coming soon…
+
