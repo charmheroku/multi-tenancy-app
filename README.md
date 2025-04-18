@@ -20,7 +20,7 @@ A scalable multi-tenant application built with FastAPI and Tortoise ORM. The app
 1. Clone the repository:
 ```bash
 git clone https://github.com/charmheroku/multi-tenancy-app
-cd multi_tenancy_app
+cd multi-tenancy-app
 ```
 
 2. Start the application using Docker Compose:
