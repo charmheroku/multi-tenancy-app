@@ -53,7 +53,6 @@ All tenant endpoints require the `X-Tenant` header with a valid tenant ID.
 multi_tenancy_app/
 ├── docker-compose.yml
 ├── Dockerfile
-├── pyproject.toml
 ├── README.md
 ├── requirements.txt
 └── src/
@@ -100,23 +99,18 @@ multi_tenancy_app/
     ├── main.py
     ├── settings.py
     ├── tenant/
-    │   ├── domain/
-    │   │   ├── __init__.py
-    │   │   └── models.py
-    │   ├── __init__.py
-    │   ├── repositories/
-    │   │   ├── __init__.py
-    │   │   └── user_repository.py
-    │   └── use_cases/
-    │       ├── __init__.py
-    │       ├── login_user.py
-    │       ├── profile_user.py
-    │       └── register_user.py
-    └── tests/
-        ├── conftest.py
+        ├── domain/
+        │   ├── __init__.py
+        │   └── models.py
         ├── __init__.py
-        ├── test_core.py
-        └── test_tenant.py
+        ├── repositories/
+        │   ├── __init__.py
+        │   └── user_repository.py
+        └── use_cases/
+            ├── __init__.py
+            ├── login_user.py
+            ├── profile_user.py
+            └── register_user.py
 ```
 
 ## Architecture
