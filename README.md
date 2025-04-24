@@ -5,10 +5,11 @@ A scalable multi-tenant application built with FastAPI and Tortoise ORM. The app
 ## Features
 
 - Multi-tenant architecture with database isolation
-- Clean architecture (Repositories, Use Cases, Domain Models)
+- Clean architecture (Domain Models, Repositories, Use Cases)
 - JWT-based authentication
 - Strategy pattern for database connection handling
 - Support for both SQLite and PostgreSQL
+- Pydantic models for API request/response validation
 
 ## Prerequisites
 
@@ -23,10 +24,10 @@ A scalable multi-tenant application built with FastAPI and Tortoise ORM. The app
    cd multi-tenancy-app
    ```
 
-2. **Start the application using Docker Compose:**
-   ```bash
-   docker-compose up
-   ```
+2. Start the application using Docker Compose:
+```bash
+docker-compose up --build
+```
 
 3. The API will be available at **http://localhost:8000**
 
@@ -54,6 +55,7 @@ Once the server is running, you can explore the API and test requests in‑brows
 | `POST` | `/api/tenant/auth/register` | Register a tenant user |
 | `POST` | `/api/tenant/auth/login` | Login a tenant user |
 | `GET`  | `/api/tenant/users/me`     | Get the current tenant user profile |
+| `PUT`  | `/api/tenant/users/me`     | Update the current tenant user profile |
 
 ## Project Structure
 
@@ -69,6 +71,7 @@ multi_tenancy_app/
     │   │   ├── core_models.py
     │   │   ├── db_config.py
     │   │   ├── db_manager.py
+    │   │   ├── db_strategy.py
     │   │   ├── __init__.py
     │   │   └── tenant_models.py
     │   ├── __init__.py
@@ -97,7 +100,8 @@ multi_tenancy_app/
     │   ├── __init__.py
     │   ├── repositories/
     │   │   ├── __init__.py
-    │   │   └── user_repository.py
+    │   │   ├── organization_repo.py
+    │   │   └── user_repo.py
     │   └── use_cases/
     │       ├── create_organization.py
     │       ├── __init__.py
@@ -106,19 +110,19 @@ multi_tenancy_app/
     ├── __init__.py
     ├── main.py
     ├── settings.py
-    ├── tenant/
+    └── tenant/
         ├── domain/
         │   ├── __init__.py
         │   └── models.py
         ├── __init__.py
         ├── repositories/
         │   ├── __init__.py
-        │   └── user_repository.py
+        │   └── user_repo.py
         └── use_cases/
             ├── __init__.py
             ├── login_user.py
-            ├── profile_user.py
-            └── register_user.py
+            ├── register_user.py
+            └── update_user.py
 ```
 
 ## Architecture
